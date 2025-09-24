@@ -16,8 +16,7 @@ def cleanup():
 
 
 def init():
-	jvm_path = os.path.join(os.path.dirname(__file__), 'jdk-17.0.2', 'bin', 'server', 'jvm.dll')
-	jpype.startJVM(jvm_path, '-Xmx48000m', '-XX:+UseG1GC', '-Djava.locale.providers=COMPAT,CLDR')
+	jpype.startJVM(jpype.getDefaultJVMPath(), '-Xmx48000m', '-XX:+UseG1GC', '-Djava.locale.providers=COMPAT,CLDR')
 
 	jar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zadamexec.jar')
 	jpype.addClassPath(jar_path)
