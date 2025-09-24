@@ -3,7 +3,6 @@
 基本的な四則演算を提供するシンプルな計算機パッケージです。
 
 ## インストール方法
-
 ```bash
 pip install git+https://github.com/YourUsername/simple_calculator.git
 ```
