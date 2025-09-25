@@ -11,7 +11,7 @@ KadoMatsuの主要モジュールはJAVA製でJPypeによりPythonからのア�
 　環境変数 PATH に C:\jdk-17.0.2\bin などを追加してください。\
 　環境変数 JAVA_HOME に C:\jdk-17.0.2 などを設定してください。\
 
-### パッケージのインストール
+### Pythonパッケージのインストール
 ```bash
 pip install git+https://github.com/KadoMatsu/KadoMatsu.git
 ```
