@@ -11,20 +11,16 @@ pip install git+https://github.com/KadoMatsu/KadoMatsu.git
 ```python
 import KadoMatsu
 
-KadoMatsu.setLog(version=True, information=True)
+KadoMatsu.setLog(version=True, information=True, debug=True)
 
-dm = KadoMatsu.createDM()
+dm = KadoMatsu.createDataMart(
+	csv="maker.csv",
+	useItem=['商品エリアCD', '大分類CD', '販売売上'])
 
-dm.item([["年月日",   "n", 1 ],
-	 ["商品名",   "a", 11],
-	 ["販売売上", "a", 15]])
 
-#dm.addCalcItem([["計算売上","販売売価 * 数量"]])
+dm.select('商品エリアCD', '大分類CD', '販売売上')\
+  .where('商品エリアCD > 50 & 大分類CD < 5')\
+  .groupBy('商品エリアCD', '大分類CD')\
+  .toCSV(maker.result.csv");
 
-dm.readCSV("maker.csv")
-
-sm = dm.createSummary();
-
-sm.item(["年月日", "商品名"], [["合計", "SUM(販売売上)"]])
-sm.tabulate().toCSV("maker.summary.csv")
 ```
