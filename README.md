@@ -1,3 +1,5 @@
+<img width="427" height="351" alt="Image" src="https://github.com/user-attachments/assets/aa34d255-51f2-4bed-a52e-eb93ad434e0a" />
+
 # KadoMatsu
 
 KadoMatsuパッケージ
