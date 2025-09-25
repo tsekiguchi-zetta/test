@@ -15,8 +15,7 @@ KadoMatsu.setLog(version=True, information=True, debug=True)
 
 dm = KadoMatsu.createDataMart(
 	"maker.csv",
-	useItem=['商品エリアCD', '大分類CD', '販売売上'])
-
+	useitem=['商品エリアCD', '大分類CD', '販売売上'])
 
 dm.select('商品エリアCD', '大分類CD', '販売売上')\
   .where('商品エリアCD > 50 & 大分類CD < 5')\
