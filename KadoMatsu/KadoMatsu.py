@@ -31,34 +31,36 @@ def setLog(
 	warning: bool = False,
 	debug: bool = False,
 	timer: bool = False,
+	charset: str = "SHIFT_JIS",
 	KadoMatsuInfo: bool = False
 	) -> None:
 	global __kmIns
-	__kmIns.initialise(version, command, information, error, warning, debug, timer)
+	__kmIns.initialise(version, command, information, error, warning, debug, timer, charset)
 	global __kmLogSW
 	__kmLogSW = KadoMatsuInfo
 
 def createDataMart(
-	*dmargs: str,
-	csv: str = None,
-	useItem: str = ...,
-	csv_type: str = "CSV1S",
-	csv_code: str = "SHIFT_JIS"):
+	*args: str,
+	csvfile: str = None,
+	useitem: str = ...,
+	csvtype: str = "CSV1S",
+	csvcharset: str = "SHIFT_JIS"):
 	global __kmIns
 	global __kmLogSW
 	dm = __kmIns.createDataMart()
 	if __kmLogSW:
 		print(">>KadoMatsu:createDataMart")
-#	if useItem:
+#	if useitem:
 #		if __kmLogSW:
-#			print(">>KadoMatsu:DM:useItem ", useItem)
-#		dm.useItem(useItem)
-	if dmargs:
-		if dmargs[0]:
-			csv = dmargs[0]
+#			print(">>KadoMatsu:DM:useItem ", useitem)
+#		dm.useItem(useitem)
+	if csvfile is None:
+		if args:
+			if args[0]:
+				csvfile = args[0]
 	if __kmLogSW:
-		print(">>KadoMatsu:DM:readCSV ", csv)
-	dm.readCSV(csv, csv_type, csv_code)
+		print(">>KadoMatsu:DM:readCSV ", csvfile)
+	dm.readCSV(csvfile, csvtype, csvcharset)
 	if __kmLogSW:
 		print(">>KadoMatsu:DM:readCSV Finish")
 	kmDm = kmDM(__kmLogSW, dm)
@@ -95,12 +97,17 @@ class kmDM:
 			print(">>KadoMatsu:DM:groupBy Finish")
 		return kmDM(self._kmLogSW, dm)
 
-	def toCSV(self, *csv: str, 
-			csv_type: str = "CSV1S",
-			csv_code: str = "SHIFT_JIS"):
+	def toCSV(self, *args: str, 
+			csvfile: str = None,
+			csvtype: str = "CSV1S",
+			csvcharset: str = "SHIFT_JIS"):
+		if csvfile is None:
+			if args:
+				if args[0]:
+					csvfile = args[0]
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:toCSV ", csv[0])
-		self._DM.toCSV(csv[0], csv_type, csv_code)
+			print(">>KadoMatsu:DM:toCSV ", csvfile)
+		self._DM.toCSV(csvfile, csvtype, csvcharset)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:toCSV Finish")
 

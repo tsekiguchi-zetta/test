@@ -14,7 +14,7 @@ import KadoMatsu
 KadoMatsu.setLog(version=True, information=True, debug=True)
 
 dm = KadoMatsu.createDataMart(
-	csv="maker.csv",
+	"maker.csv",
 	useItem=['商品エリアCD', '大分類CD', '販売売上'])
 
 
