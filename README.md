@@ -7,7 +7,7 @@ KadoMatsuパッケージ
 ### JAVAのインストール
 KadoMatsuの主要モジュールはJAVA製でJPypeによりPythonからのアクセスを実現していますので、JAVAをインストールしてください。\
 (Windows環境)\
-　JAVAインストールした後は、環境変数 PATH / JAVA_HOME の設定を行ってください。\
+　JAVAをインストールした後は、環境変数 PATH / JAVA_HOME の設定を行ってください。\
 　環境変数 PATH に C:\jdk-17.0.2\bin などを追加してください。\
 　環境変数 JAVA_HOME に C:\jdk-17.0.2 などを設定してください。\
 
