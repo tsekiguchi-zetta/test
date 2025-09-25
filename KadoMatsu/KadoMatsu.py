@@ -103,3 +103,4 @@ class kmDM:
 		self._DM.toCSV(csv[0], csv_type, csv_code)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:toCSV Finish")
+

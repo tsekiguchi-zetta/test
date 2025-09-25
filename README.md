@@ -1,6 +1,6 @@
 # KadoMatsu
 
-KadoMatsuパッケージです。
+KadoMatsuパッケージ
 
 ## インストール方法
 ```bash
