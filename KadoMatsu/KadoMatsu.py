@@ -50,17 +50,22 @@ def createDataMart(
 	useItem: str = ...,
 	csv_type: str = "CSV1S",
 	csv_code: str = "SHIFT_JIS"):
+
 	global __km
 	dm = __km.createDataMart()
+	print(">>KadoMatsu:createDataMart")
 
 #	if useItem:
+#		print(">>KadoMatsu:DM:useItem ", useItem)
 #		dm.useItem(useItem)
 
 	if dmargs:
 		if dmargs[0]:
 			csv = dmargs[0]
 
+	print(">>KadoMatsu:DM:readCSV ", csv)
 	dm.readCSV(csv, csv_type, csv_code)
+	print(">>KadoMatsu:DM:readCSV Finish")
 
 	kmDm = kmDM(dm);
 	return kmDm;
@@ -75,22 +80,27 @@ class kmDM:
 	def select(self, *args: str):
 		print(">>KadoMatsu:DM:select ", args)
 		dm = self._DM.select(args)
+		print(">>KadoMatsu:DM:select Finish")
 		kmDm = kmDM(dm);
 		return kmDm;
 
 	def where(self, args: str):
 		print(">>KadoMatsu:DM:where ", args)
 		dm = self._DM.where(args)
+		print(">>KadoMatsu:DM:where Finish")
 		kmDm = kmDM(dm);
 		return kmDm;
 
 	def groupBy(self, *args: str):
 		print(">>KadoMatsu:DM:groupBy ", args)
 		dm = self._DM.groupBy(args)
+		print(">>KadoMatsu:DM:groupBy Finish")
 		kmDm = kmDM(dm);
 		return kmDm;
 
 	def toCSV(self, *csv: str, 
 			csv_type: str = "CSV1S",
 			csv_code: str = "SHIFT_JIS"):
+		print(">>KadoMatsu:DM:toCSV ", csv[0])
 		self._DM.toCSV(csv[0], csv_type, csv_code)
+		print(">>KadoMatsu:DM:toCSV Finish")
