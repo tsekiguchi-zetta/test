@@ -1,3 +1,6 @@
+from __future__ import annotations
+from dataclasses import dataclass
+
 import jpype
 import os
 import atexit
@@ -44,7 +47,7 @@ def createDataMart(
 	csvfile: str = None,
 	usecolumn: str = ...,
 	csvtype: str = "CSV1S",
-	csvcharset: str = "SHIFT_JIS"):
+	csvcharset: str = "SHIFT_JIS") -> kmDM:
 	global __kmIns
 	global __kmLogSW
 	dm = __kmIns.createDataMart()
@@ -63,17 +66,20 @@ def createDataMart(
 	dm.readCSV(csvfile, csvtype, csvcharset)
 	if __kmLogSW:
 		print(">>KadoMatsu:DM:readCSV Finish")
-	kmDm = kmDM(__kmLogSW, dm)
-	return kmDm
+	return kmDM(__kmLogSW, dm)
 
+@dataclass
 class kmDM:
 	_kmLogSW = False
 	_DM = None
+
+	@classmethod
 	def __init__(self, kmLogSW, dm):
 		self._kmLogSW = kmLogSW
 		self._DM = dm
 
-	def select(self, *args: str):
+	@classmethod
+	def select(self, *args: str) -> kmDM:
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:select", args)
 		dm = self._DM.select(args)
@@ -81,7 +87,8 @@ class kmDM:
 			print(">>KadoMatsu:DM:select Finish")
 		return kmDM(self._kmLogSW, dm)
 
-	def where(self, args: str):
+	@classmethod
+	def where(self, args: str) -> kmDM:
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:where", args)
 		dm = self._DM.where(args)
@@ -89,7 +96,8 @@ class kmDM:
 			print(">>KadoMatsu:DM:where Finish")
 		return kmDM(self._kmLogSW, dm)
 
-	def groupBy(self, *args: str):
+	@classmethod
+	def groupBy(self, *args: str) -> kmDM:
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:groupBy", args)
 		dm = self._DM.groupBy(args)
@@ -97,6 +105,7 @@ class kmDM:
 			print(">>KadoMatsu:DM:groupBy Finish")
 		return kmDM(self._kmLogSW, dm)
 
+	@classmethod
 	def toCSV(self, *args: str, 
 			csvfile: str = None,
 			csvtype: str = "CSV1S",
