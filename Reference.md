@@ -45,9 +45,9 @@ dm = KadoMatsu.createDataMart(
 データマート クラス
 
 #### select
-SQLのselectに準拠した機能
+SQLのselectに準拠
 ```python
-select(*args: str) -> kmDM
+select(*items: str) -> kmDM
 ```
 例
 ```python
@@ -55,9 +55,9 @@ dm.select('商品エリアCD', '大分類CD', '販売売上')
 ```
 
 #### where
-SQLのwhereに準拠した機能
+SQLのwhereに準拠
 ```python
-where(args: str) -> kmDM
+where(condition: str) -> kmDM
 ```
 例
 ```python
@@ -65,9 +65,9 @@ dm.where('商品エリアCD > 50 & 大分類CD < 5')
 ```
 
 #### groupBy
-SQLのgroupByに準拠した機能
+SQLのgroupByに準拠
 ```python
-groupBy(*args: str) -> kmDM
+groupBy(*items: str) -> kmDM
 ```
 例
 ```python
@@ -75,11 +75,12 @@ dm.groupBy('商品エリアCD', '大分類CD')
 ```
 
 #### toCSV
-データマートあるはselect等の結果をCSV形式のファイルに保存
+CSV形式のファイルに保存
 ```python
-toCSV(csvfile: str = None,
-			csvtype: str = "CSV1S",
-			csvcharset: str = "SHIFT_JIS"
+toCSV(
+  csvfile: str = None,
+	csvtype: str = "CSV1S",
+	csvcharset: str = "SHIFT_JIS"
 ) -> None
 ```
 例

@@ -79,28 +79,28 @@ class kmDM:
 		self._DM = dm
 
 	@classmethod
-	def select(self, *args: str) -> kmDM:
+	def select(self, *items: str) -> kmDM:
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:select", args)
-		dm = self._DM.select(args)
+			print(">>KadoMatsu:DM:select", items)
+		dm = self._DM.select(items)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:select Finish")
 		return kmDM(self._kmLogSW, dm)
 
 	@classmethod
-	def where(self, args: str) -> kmDM:
+	def where(self, condition: str) -> kmDM:
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:where", args)
-		dm = self._DM.where(args)
+			print(">>KadoMatsu:DM:where", condition)
+		dm = self._DM.where(condition)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:where Finish")
 		return kmDM(self._kmLogSW, dm)
 
 	@classmethod
-	def groupBy(self, *args: str) -> kmDM:
+	def groupBy(self, *items: str) -> kmDM:
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:groupBy", args)
-		dm = self._DM.groupBy(args)
+			print(">>KadoMatsu:DM:groupBy", items)
+		dm = self._DM.groupBy(items)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:groupBy Finish")
 		return kmDM(self._kmLogSW, dm)
