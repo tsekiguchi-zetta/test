@@ -42,7 +42,7 @@ def setLog(
 def createDataMart(
 	*args: str,
 	csvfile: str = None,
-	useitem: str = ...,
+	usecolumn: str = ...,
 	csvtype: str = "CSV1S",
 	csvcharset: str = "SHIFT_JIS"):
 	global __kmIns
@@ -50,16 +50,16 @@ def createDataMart(
 	dm = __kmIns.createDataMart()
 	if __kmLogSW:
 		print(">>KadoMatsu:createDataMart")
-#	if useitem:
-#		if __kmLogSW:
-#			print(">>KadoMatsu:DM:useItem ", useitem)
-#		dm.useItem(useitem)
+	if usecolumn:
+		if __kmLogSW:
+			print(">>KadoMatsu:DM:usecolumn ", usecolumn)
+		dm.useColumn(usecolumn)
 	if csvfile is None:
 		if args:
 			if args[0]:
 				csvfile = args[0]
 	if __kmLogSW:
-		print(">>KadoMatsu:DM:readCSV ", csvfile)
+		print(">>KadoMatsu:DM:readCSV", csvfile)
 	dm.readCSV(csvfile, csvtype, csvcharset)
 	if __kmLogSW:
 		print(">>KadoMatsu:DM:readCSV Finish")
@@ -75,7 +75,7 @@ class kmDM:
 
 	def select(self, *args: str):
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:select ", args)
+			print(">>KadoMatsu:DM:select", args)
 		dm = self._DM.select(args)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:select Finish")
@@ -83,7 +83,7 @@ class kmDM:
 
 	def where(self, args: str):
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:where ", args)
+			print(">>KadoMatsu:DM:where", args)
 		dm = self._DM.where(args)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:where Finish")
@@ -91,7 +91,7 @@ class kmDM:
 
 	def groupBy(self, *args: str):
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:groupBy ", args)
+			print(">>KadoMatsu:DM:groupBy", args)
 		dm = self._DM.groupBy(args)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:groupBy Finish")
@@ -100,13 +100,13 @@ class kmDM:
 	def toCSV(self, *args: str, 
 			csvfile: str = None,
 			csvtype: str = "CSV1S",
-			csvcharset: str = "SHIFT_JIS"):
+			csvcharset: str = "SHIFT_JIS") -> None:
 		if csvfile is None:
 			if args:
 				if args[0]:
 					csvfile = args[0]
 		if self._kmLogSW:
-			print(">>KadoMatsu:DM:toCSV ", csvfile)
+			print(">>KadoMatsu:DM:toCSV", csvfile)
 		self._DM.toCSV(csvfile, csvtype, csvcharset)
 		if self._kmLogSW:
 			print(">>KadoMatsu:DM:toCSV Finish")
