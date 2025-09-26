@@ -34,9 +34,7 @@ createDataMart(
 ```
 例
 ```python
-dm = KadoMatsu.createDataMart(
-	'maker.csv',
-	usecolumn=['商品エリアCD', '大分類CD', '販売売上'])
+dm = KadoMatsu.createDataMart('maker.csv', usecolumn=['商品エリアCD', '大分類CD', '販売売上'])
 ```
 
 ## クラス
