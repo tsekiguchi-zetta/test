@@ -6,12 +6,12 @@ __kmClass = None
 __kmIns = None
 __kmLogSW = False
 
-def cleanup():
+def cleanup() -> None:
 	global __kmIns
 	__kmIns.finalise()
 	jpype.shutdownJVM()
 
-def init():
+def init() -> None:
 	jpype.startJVM(jpype.getDefaultJVMPath(), '-Xmx48000m', '-XX:+UseG1GC', '-Djava.locale.providers=COMPAT,CLDR')
 	jar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'KadoMatsu.jar')
 	jpype.addClassPath(jar_path)
@@ -34,10 +34,10 @@ def setLog(
 	charset: str = "SHIFT_JIS",
 	KadoMatsuInfo: bool = False
 	) -> None:
-	global __kmIns
-	__kmIns.initialise(version, command, information, error, warning, debug, timer, charset)
-	global __kmLogSW
-	__kmLogSW = KadoMatsuInfo
+		global __kmIns
+		__kmIns.initialise(version, command, information, error, warning, debug, timer, charset)
+		global __kmLogSW
+		__kmLogSW = KadoMatsuInfo
 
 def createDataMart(
 	*args: str,
