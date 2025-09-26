@@ -33,5 +33,5 @@ dm.select('商品エリアCD', '大分類CD', '販売売上')\
 
 ```
 
-## リファレンス
-[リファレンス](Reference.md) 
+## [リファレンス](Reference.md)
+ 
