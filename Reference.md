@@ -6,7 +6,7 @@
 コンソールに出力するログのOn/Offを設定
 ```python
 setLog(
-	version: bool = False,
+  version: bool = False,
 	command: bool = False,
 	information: bool = False,
 	error: bool = True,
@@ -27,9 +27,9 @@ CSVデータをデータマートの読み込み
 ```python
 createDataMart(
   csvfile: str = None,
-	usecolumn: str = ...,
-	csvtype: str = "CSV1S",
-	csvcharset: str = "SHIFT_JIS"
+  usecolumn: str = ...,
+  csvtype: str = "CSV1S",
+  csvcharset: str = "SHIFT_JIS"
 ) -> kmDM
 ```
 例
@@ -79,8 +79,8 @@ CSV形式のファイルに保存
 ```python
 toCSV(
   csvfile: str = None,
-	csvtype: str = "CSV1S",
-	csvcharset: str = "SHIFT_JIS"
+  csvtype: str = "CSV1S",
+  csvcharset: str = "SHIFT_JIS"
 ) -> None
 ```
 例
